@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Repos\\FileO\\FileO\\",
+  "WorkspaceRootPath": "C:\\Users\\admin\\Desktop\\\u0425\u0423\u0419\\FileO\\FileO\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C6FF3847-ABD6-4B2D-9A36-78A18D426663}|FileO\\FileO.csproj|c:\\repos\\fileo\\fileo\\fileo\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{C6FF3847-ABD6-4B2D-9A36-78A18D426663}|FileO\\FileO.csproj|c:\\users\\admin\\desktop\\\u0445\u0443\u0439\\fileo\\fileo\\fileo\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C6FF3847-ABD6-4B2D-9A36-78A18D426663}|FileO\\FileO.csproj|solutionrelative:fileo\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6FF3847-ABD6-4B2D-9A36-78A18D426663}|FileO\\FileO.csproj|c:\\repos\\fileo\\fileo\\fileo\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C6FF3847-ABD6-4B2D-9A36-78A18D426663}|FileO\\FileO.csproj|C:\\Users\\admin\\Desktop\\\u0425\u0423\u0419\\FileO\\FileO\\fileo\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C6FF3847-ABD6-4B2D-9A36-78A18D426663}|FileO\\FileO.csproj|solutionrelative:fileo\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -18,19 +18,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Repos\\FileO\\FileO\\FileO\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\\u0425\u0423\u0419\\FileO\\FileO\\FileO\\MainWindow.xaml",
               "RelativeDocumentMoniker": "FileO\\MainWindow.xaml",
-              "ToolTip": "C:\\Repos\\FileO\\FileO\\FileO\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\admin\\Desktop\\\u0425\u0423\u0419\\FileO\\FileO\\FileO\\MainWindow.xaml",
               "RelativeToolTip": "FileO\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-11-10T18:58:06.77Z",
@@ -40,14 +36,13 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Repos\\FileO\\FileO\\FileO\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\\u0425\u0423\u0419\\FileO\\FileO\\FileO\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "FileO\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Repos\\FileO\\FileO\\FileO\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\admin\\Desktop\\\u0425\u0423\u0419\\FileO\\FileO\\FileO\\MainWindow.xaml.cs",
               "RelativeToolTip": "FileO\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T18:58:05.753Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-10T18:58:05.753Z"
             }
           ]
         }
