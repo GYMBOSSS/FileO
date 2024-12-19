@@ -7,6 +7,61 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DockPanel>
+            <Menu>
+                <MenuItem Header="Custom">
+                    <MenuItem Header="Кастомизация"></MenuItem>
+                    <MenuItem Header="Сбросить кастомизацию"></MenuItem>
+                </MenuItem>
+            </Menu>
+            <DockPanel Grid.Column="0">
+                <StackPanel DockPanel.Dock="Top">
+                    <Grid Height="45" MaxWidth="315">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Width="45">ICON 1</Button>
+                        <Button Grid.Column="2" Width="45">ICON 2</Button>
+                        <Button Grid.Column="4" Width="45">ICON 3</Button>
+                        <Button Grid.Column="6" Width="45">ICON 4</Button>
+                    </Grid>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Bottom">
+                    <!--<TextBlock Visibility="Hidden"></TextBlock>-->
+                    <ComboBox x:Name="CurrentDrive">Current drive</ComboBox>
+                    <TreeView>
+                        <TreeViewItem Header="Holder1">
+                            <GroupItem>File1</GroupItem>
+                            <GroupItem>File2</GroupItem>
+                            <GroupItem>File3</GroupItem>
+                        </TreeViewItem>
+                        <TreeViewItem Header="Holder2">
+                            <GroupItem>File4</GroupItem>
+                            <GroupItem>File5</GroupItem>
+                        </TreeViewItem>
+                        <TreeViewItem Header="Holder3"></TreeViewItem>
+                        <TreeViewItem Header="Holder4">File6</TreeViewItem>
+                    </TreeView>
+                </StackPanel>
+            </DockPanel>
+        </DockPanel>
+        <Grid Grid.Column="1"/>
+        <Grid Grid.Column="2">
+            <DockPanel>
+                
+                <Button  DockPanel.Dock="Bottom">Save</Button>
+                <TextBox DockPanel.Dock="Top">Hello World!</TextBox>
+            </DockPanel>
+        </Grid>
     </Grid>
 </Window>
