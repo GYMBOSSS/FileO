@@ -20,7 +20,7 @@
             </Menu>
             <DockPanel Grid.Column="0">
                 <StackPanel DockPanel.Dock="Top">
-                    <Grid Height="45">
+                    <Grid Height="45" MaxWidth="315">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
@@ -39,13 +39,29 @@
                 <StackPanel DockPanel.Dock="Bottom">
                     <!--<TextBlock Visibility="Hidden"></TextBlock>-->
                     <ComboBox x:Name="CurrentDrive">Current drive</ComboBox>
-                    <TreeView/>
+                    <TreeView>
+                        <TreeViewItem Header="Holder1">
+                            <GroupItem>File1</GroupItem>
+                            <GroupItem>File2</GroupItem>
+                            <GroupItem>File3</GroupItem>
+                        </TreeViewItem>
+                        <TreeViewItem Header="Holder2">
+                            <GroupItem>File4</GroupItem>
+                            <GroupItem>File5</GroupItem>
+                        </TreeViewItem>
+                        <TreeViewItem Header="Holder3"></TreeViewItem>
+                        <TreeViewItem Header="Holder4">File6</TreeViewItem>
+                    </TreeView>
                 </StackPanel>
             </DockPanel>
         </DockPanel>
         <Grid Grid.Column="1"/>
         <Grid Grid.Column="2">
-
+            <DockPanel>
+                
+                <Button  DockPanel.Dock="Bottom">Save</Button>
+                <TextBox DockPanel.Dock="Top">Hello World!</TextBox>
+            </DockPanel>
         </Grid>
     </Grid>
 </Window>
