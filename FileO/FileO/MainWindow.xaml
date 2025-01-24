@@ -23,7 +23,7 @@
                     BorderBrush="#FF009CFF" BorderThickness="2" Background="#FFE5FFB9" FontSize="20" FontFamily="Arial">
                 Options
             </Button>
-            <TreeView x:Name="FileTree" Grid.Row="1" Background="#FF93FFFD" Margin="10,0,2,10" ></TreeView>
+            <TreeView x:Name="FileTree" MouseDoubleClick="FileTree_MouseDoubleClick" Grid.Row="1" Background="#FF93FFFD" Margin="10,0,2,10" ></TreeView>
             <ComboBox x:Name="Drives" Grid.Row="0" Style="{DynamicResource StylishComboBox}" 
                      BorderBrush="#FF009CFF" BorderThickness="2" Background="#FFE5FFB9"
                      FontSize="20" FontFamily="Arial" Margin="126,10,10,10"></ComboBox>

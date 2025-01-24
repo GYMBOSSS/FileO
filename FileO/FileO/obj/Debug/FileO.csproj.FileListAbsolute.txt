@@ -32,3 +32,7 @@ C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\Fil
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\FileO.pdb
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\App.baml
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\Templates\Templates.baml
+C:\Users\admin\Desktop\ХУЙ\FileO\FileO\FileO\obj\Debug\Templates\Templates.baml
+C:\Users\admin\Desktop\ХУЙ\FileO\FileO\FileO\obj\Debug\Window1.g.cs
+C:\Users\admin\Desktop\ХУЙ\FileO\FileO\FileO\obj\Debug\App.baml
+C:\Users\admin\Desktop\ХУЙ\FileO\FileO\FileO\obj\Debug\Window1.baml

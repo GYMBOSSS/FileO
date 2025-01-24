@@ -36,5 +36,27 @@ namespace FileO
             };
             Drives.ItemsSource = Items;
         }
+
+        private void FileTree_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (FileTree.SelectedItem != null && (FileTree.SelectedItem as TreeViewItem).Items.Count == 0) 
+            {
+                string path = GetPath(FileTree.SelectedItem as TreeViewItem);
+            }
+        }
+
+        private string GetPath(TreeViewItem treeViewItem)
+        {
+            string path = "";
+            if (treeViewItem.Parent as TreeViewItem != null)
+            {
+                path = GetPath(treeViewItem.Parent as TreeViewItem) + "\\" + treeViewItem.Header + path;
+            }
+            else
+            {
+                path = Drives.Text + path + treeViewItem.Header as string;
+            }
+            return path;
+        }
     }
 }
