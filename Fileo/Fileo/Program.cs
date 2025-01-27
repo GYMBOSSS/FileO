@@ -82,8 +82,6 @@ class FileManager
         }
     }
 
-    // Остальной код остается без изменений
-
     static void DisplayDirectoryContents(string path)
     {
         try
