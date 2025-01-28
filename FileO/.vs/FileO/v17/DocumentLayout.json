@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440\\Desktop\\FileO Master\\FileO\\FileO\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C6FF3847-ABD6-4B2D-9A36-78A18D426663}|FileO\\FileO.csproj|c:\\users\\\u0430\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440\\desktop\\fileo master\\fileo\\fileo\\fileo\\templates\\templates.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C6FF3847-ABD6-4B2D-9A36-78A18D426663}|FileO\\FileO.csproj|solutionrelative:fileo\\templates\\templates.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{C6FF3847-ABD6-4B2D-9A36-78A18D426663}|FileO\\FileO.csproj|c:\\users\\\u0430\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440\\desktop\\fileo master\\fileo\\fileo\\fileo\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C6FF3847-ABD6-4B2D-9A36-78A18D426663}|FileO\\FileO.csproj|solutionrelative:fileo\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6FF3847-ABD6-4B2D-9A36-78A18D426663}|FileO\\FileO.csproj|C:\\Users\\\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440\\Desktop\\FileO Master\\FileO\\FileO\\fileo\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C6FF3847-ABD6-4B2D-9A36-78A18D426663}|FileO\\FileO.csproj|solutionrelative:fileo\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{C6FF3847-ABD6-4B2D-9A36-78A18D426663}|FileO\\FileO.csproj|C:\\Users\\\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440\\Desktop\\FileO Master\\FileO\\FileO\\fileo\\templates\\templates.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C6FF3847-ABD6-4B2D-9A36-78A18D426663}|FileO\\FileO.csproj|solutionrelative:fileo\\templates\\templates.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C6FF3847-ABD6-4B2D-9A36-78A18D426663}|FileO\\FileO.csproj|C:\\Users\\\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440\\Desktop\\FileO Master\\FileO\\FileO\\fileo\\lbitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -33,7 +33,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -49,17 +49,16 @@
               "RelativeToolTip": "FileO\\LBItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T03:43:07.247Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-23T03:43:07.247Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Templates.xaml",
               "DocumentMoniker": "C:\\Users\\\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440\\Desktop\\FileO Master\\FileO\\FileO\\FileO\\Templates\\Templates.xaml",
               "RelativeDocumentMoniker": "FileO\\Templates\\Templates.xaml",
-              "ToolTip": "C:\\Users\\\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440\\Desktop\\FileO Master\\FileO\\FileO\\FileO\\Templates\\Templates.xaml*",
-              "RelativeToolTip": "FileO\\Templates\\Templates.xaml*",
+              "ToolTip": "C:\\Users\\\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440\\Desktop\\FileO Master\\FileO\\FileO\\FileO\\Templates\\Templates.xaml",
+              "RelativeToolTip": "FileO\\Templates\\Templates.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-01-16T19:26:18.598Z",
               "EditorCaption": ""
@@ -78,7 +77,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440\\Desktop\\FileO Master\\FileO\\FileO\\FileO\\MainWindow.xaml",
               "RelativeDocumentMoniker": "FileO\\MainWindow.xaml",
@@ -98,8 +97,7 @@
               "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\92a55ada2dd14c597d671f498d0088eed7bd36127645c3f93e1b173c5e115e9c\\Storyboard.cs",
               "ViewState": "AgIAAHQBAAAAAAAAAAAEwIgBAAADAAAAAQAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T20:13:51.219Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-16T20:13:51.219Z"
             },
             {
               "$type": "Document",
@@ -111,8 +109,7 @@
               "RelativeToolTip": "FileO\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T18:58:05.753Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-10T18:58:05.753Z"
             }
           ]
         }
