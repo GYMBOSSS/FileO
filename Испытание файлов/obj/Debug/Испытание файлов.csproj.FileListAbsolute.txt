@@ -1,0 +1,15 @@
+C:\Users\admin\Desktop\Испытание файлов\bin\Debug\Испытание файлов.exe.config
+C:\Users\admin\Desktop\Испытание файлов\bin\Debug\Испытание файлов.exe
+C:\Users\admin\Desktop\Испытание файлов\bin\Debug\Испытание файлов.pdb
+C:\Users\admin\Desktop\Испытание файлов\obj\Debug\Испытание файлов.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\Испытание файлов\obj\Debug\MainWindow.g.cs
+C:\Users\admin\Desktop\Испытание файлов\obj\Debug\App.g.cs
+C:\Users\admin\Desktop\Испытание файлов\obj\Debug\Испытание файлов_MarkupCompile.cache
+C:\Users\admin\Desktop\Испытание файлов\obj\Debug\Испытание файлов_MarkupCompile.lref
+C:\Users\admin\Desktop\Испытание файлов\obj\Debug\MainWindow.baml
+C:\Users\admin\Desktop\Испытание файлов\obj\Debug\Испытание файлов.g.resources
+C:\Users\admin\Desktop\Испытание файлов\obj\Debug\Испытание_файлов.Properties.Resources.resources
+C:\Users\admin\Desktop\Испытание файлов\obj\Debug\Испытание файлов.csproj.GenerateResource.cache
+C:\Users\admin\Desktop\Испытание файлов\obj\Debug\Испытание файлов.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Испытание файлов\obj\Debug\Испытание файлов.exe
+C:\Users\admin\Desktop\Испытание файлов\obj\Debug\Испытание файлов.pdb
