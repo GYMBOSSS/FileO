@@ -1,0 +1,14 @@
+C:\Users\glebe\source\repos\Fileo\Fileo\bin\Debug\net8.0\Fileo.exe
+C:\Users\glebe\source\repos\Fileo\Fileo\bin\Debug\net8.0\Fileo.deps.json
+C:\Users\glebe\source\repos\Fileo\Fileo\bin\Debug\net8.0\Fileo.runtimeconfig.json
+C:\Users\glebe\source\repos\Fileo\Fileo\bin\Debug\net8.0\Fileo.dll
+C:\Users\glebe\source\repos\Fileo\Fileo\bin\Debug\net8.0\Fileo.pdb
+C:\Users\glebe\source\repos\Fileo\Fileo\obj\Debug\net8.0\Fileo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\glebe\source\repos\Fileo\Fileo\obj\Debug\net8.0\Fileo.AssemblyInfoInputs.cache
+C:\Users\glebe\source\repos\Fileo\Fileo\obj\Debug\net8.0\Fileo.AssemblyInfo.cs
+C:\Users\glebe\source\repos\Fileo\Fileo\obj\Debug\net8.0\Fileo.csproj.CoreCompileInputs.cache
+C:\Users\glebe\source\repos\Fileo\Fileo\obj\Debug\net8.0\Fileo.dll
+C:\Users\glebe\source\repos\Fileo\Fileo\obj\Debug\net8.0\refint\Fileo.dll
+C:\Users\glebe\source\repos\Fileo\Fileo\obj\Debug\net8.0\Fileo.pdb
+C:\Users\glebe\source\repos\Fileo\Fileo\obj\Debug\net8.0\Fileo.genruntimeconfig.cache
+C:\Users\glebe\source\repos\Fileo\Fileo\obj\Debug\net8.0\ref\Fileo.dll
