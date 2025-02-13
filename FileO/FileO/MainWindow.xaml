@@ -5,28 +5,85 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileO"
         mc:Ignorable="d"
-        Title="MainWindow" Height="534" Width="942" Background="{x:Null}">
+        Title="File Manager" Height="534" Width="942" Background="{x:Null}">
     <Window.Resources>
-
+        <!-- Подключение шаблонов -->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Templates\Templates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <!-- Цветовые схемы -->
+            <SolidColorBrush x:Key="LightThemeBackground" Color="#FF93FFFD" />
+            <SolidColorBrush x:Key="LightThemeForeground" Color="#FF009CFF" />
+            <SolidColorBrush x:Key="DarkThemeBackground" Color="#212121" />
+            <SolidColorBrush x:Key="DarkThemeForeground" Color="#FFFFFF" />
+        </ResourceDictionary>
     </Window.Resources>
-    <Border CornerRadius="20" Background="#FF93FFFD" Margin="10,0,10,10">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="329"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Button x:Name="MyButton" Template="{DynamicResource BTTemplate}" Margin="10,10,219,10" 
-                    BorderBrush="#FF009CFF" BorderThickness="2" Background="#FFE5FFB9" FontSize="20" FontFamily="Arial">
-                Options
-            </Button>
-            <TreeView x:Name="FileTree" Grid.Row="1" Background="#FF93FFFD" Margin="10,0,2,10" ></TreeView>
-            <ComboBox x:Name="Drives" Grid.Row="0" Style="{DynamicResource StylishComboBox}" 
-                     BorderBrush="#FF009CFF" BorderThickness="2" Background="#FFE5FFB9"
-                     FontSize="20" FontFamily="Arial" Margin="126,10,10,10"></ComboBox>
-        </Grid>
-    </Border>
+
+    <!-- Корневой контейнер -->
+    <Grid>
+        <!-- Основное содержимое окна -->
+        <Border CornerRadius="20" Background="{DynamicResource LightThemeBackground}" Margin="10,0,10,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="329"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <!-- Кнопка настроек -->
+                <Button x:Name="MyButton" Template="{DynamicResource BTTemplate}" 
+                        BorderBrush="{DynamicResource LightThemeForeground}" 
+                        BorderThickness="2" Background="{DynamicResource LightThemeBackground}" 
+                        FontSize="20" FontFamily="Arial" Margin="10,10,219,10" Click="MyButton_Click">
+                    Options
+                </Button>
+
+                <!-- Выбор локального диска -->
+                <ComboBox x:Name="Drives" Grid.Row="0" Style="{DynamicResource StylishComboBox}" 
+                          BorderBrush="{DynamicResource LightThemeForeground}" 
+                          BorderThickness="2" Background="{DynamicResource LightThemeBackground}"
+                          FontSize="20" FontFamily="Arial" Margin="126,10,10,10" 
+                          SelectionChanged="Drives_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding IconPath}" Width="20" Height="20" Margin="5"/>
+                                <TextBlock Text="{Binding DriveName}" Margin="5" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <!-- Файловое дерево -->
+                <TreeView x:Name="FileTree" Grid.Row="1" Background="{DynamicResource LightThemeBackground}" 
+          Margin="10,0,2,10" ItemsSource="{Binding Items}">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}" />
+                                <TextBlock Text="{Binding Size}" Margin="10,0,0,0" FontStyle="Italic" Foreground="Gray" />
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </Grid>
+        </Border>
+
+        <!-- Окно настроек -->
+        <Popup x:Name="SettingsPopup" Placement="Center" IsOpen="False" AllowsTransparency="True">
+            <Border Background="{DynamicResource LightThemeBackground}" BorderBrush="{DynamicResource LightThemeForeground}" 
+                    BorderThickness="2" CornerRadius="10" Padding="10">
+                <StackPanel>
+                    <TextBlock Text="Settings" FontWeight="Bold" FontSize="18" Margin="0,0,0,10" />
+                    <RadioButton GroupName="Themes" Content="Light Theme" IsChecked="True" Click="LightTheme_Click" />
+                    <RadioButton GroupName="Themes" Content="Dark Theme" Click="DarkTheme_Click" />
+                    <Button Content="Close" HorizontalAlignment="Right" Margin="0,10,0,0" Click="CloseSettings_Click" />
+                </StackPanel>
+            </Border>
+        </Popup>
+    </Grid>
 </Window>

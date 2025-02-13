@@ -17,11 +17,13 @@ C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\bin\Debug\Fil
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\bin\Debug\FileO.exe
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\bin\Debug\FileO.pdb
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\FileO.csproj.AssemblyReference.cache
+C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\Templates\Templates.baml
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\MainWindow.g.cs
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\Window1.g.cs
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\App.g.cs
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\FileO_MarkupCompile.cache
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\FileO_MarkupCompile.lref
+C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\App.baml
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\MainWindow.baml
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\Window1.baml
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\FileO.g.resources
@@ -30,5 +32,3 @@ C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\Fil
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\FileO.csproj.CoreCompileInputs.cache
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\FileO.exe
 C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\FileO.pdb
-C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\App.baml
-C:\Users\Александр\Desktop\FileO Master\FileO\FileO\FileO\obj\Debug\Templates\Templates.baml

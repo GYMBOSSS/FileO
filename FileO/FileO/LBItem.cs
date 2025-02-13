@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FileO
 {
-    internal class LBItem
+    public class LBItem
     {
-        public string Name { get; set; }
+        public DriveInfo ThisDrive { get; set; }
         public string IconPath {  get; set; }
 
-        public LBItem(string name, string iconPath)
+        public LBItem(DriveInfo drive, string iconPath)
         {
-            Name = name;
+            ThisDrive = drive;
             IconPath = iconPath;
         }
+        public string DriveName => ThisDrive.Name;
     }
 }

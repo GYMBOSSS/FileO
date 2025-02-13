@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\glebe\\source\\repos\\Fileo\\Fileo\\Fileo.csproj": {}
+    "C:\\Users\\Александр\\Desktop\\FileO Master\\FileO\\FileOBackend\\Fileo\\Fileo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\glebe\\source\\repos\\Fileo\\Fileo\\Fileo.csproj": {
+    "C:\\Users\\Александр\\Desktop\\FileO Master\\FileO\\FileOBackend\\Fileo\\Fileo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\glebe\\source\\repos\\Fileo\\Fileo\\Fileo.csproj",
+        "projectUniqueName": "C:\\Users\\Александр\\Desktop\\FileO Master\\FileO\\FileOBackend\\Fileo\\Fileo.csproj",
         "projectName": "Fileo",
-        "projectPath": "C:\\Users\\glebe\\source\\repos\\Fileo\\Fileo\\Fileo.csproj",
-        "packagesPath": "C:\\Users\\glebe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\glebe\\source\\repos\\Fileo\\Fileo\\obj\\",
+        "projectPath": "C:\\Users\\Александр\\Desktop\\FileO Master\\FileO\\FileOBackend\\Fileo\\Fileo.csproj",
+        "packagesPath": "C:\\Users\\Александр\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Александр\\Desktop\\FileO Master\\FileO\\FileOBackend\\Fileo\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\glebe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Александр\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

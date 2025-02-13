@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fileo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+143571d3fd37df6a5205968d0bbff5338cf4ddd1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fileo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fileo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

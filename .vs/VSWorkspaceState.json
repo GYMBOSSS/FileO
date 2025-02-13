@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\FileO",
+    "\\FileOBackend",
+    "\\FileO\\FileO"
   ],
+  "SelectedNode": "\\FileOBackend\\Fileo.sln",
   "PreviewInSolutionExplorer": false
 }
