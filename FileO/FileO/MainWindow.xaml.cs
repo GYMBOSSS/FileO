@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using FileO.Models;
 using FileO.ViewModels;
 
 namespace FileO
@@ -46,11 +47,14 @@ namespace FileO
             }
         }
 
+        // Контекстное меню
         private void FileTree_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
-            if (FileTree.SelectedItem is TreeViewItem selectedTreeViewItem)
+            // Проверяем, выбран ли элемент в TreeView
+            if (FileTree.SelectedItem is DtoItem selectedItem)
             {
-                if (selectedTreeViewItem.Tag is DriveInfo || selectedTreeViewItem.Tag is DirectoryInfo)
+                // Включаем контекстное меню, если выбран диск или директория
+                if (selectedItem.ItemKind == Kind.Directory || selectedItem.ItemKind == Kind.File)
                 {
                     var contextMenu = (ContextMenu)FileTree.ContextMenu;
                     contextMenu.IsEnabled = true;
@@ -61,39 +65,81 @@ namespace FileO
                     contextMenu.IsEnabled = false;
                 }
             }
+            else
+            {
+                // Если ничего не выбрано, отключаем контекстное меню
+                var contextMenu = (ContextMenu)FileTree.ContextMenu;
+                contextMenu.IsEnabled = false;
+            }
         }
 
-        // Контекстное меню
         private void Open_Click(object sender, RoutedEventArgs e)
         {
-            if (FileTree.SelectedItem is TreeViewItem item && item.Tag is DirectoryInfo dirInfo)
+            if (FileTree.SelectedItem is DtoItem selectedItem && selectedItem.ItemKind == Kind.Directory)
             {
-                Process.Start("explorer.exe", dirInfo.FullName);
+                Process.Start("explorer.exe", selectedItem.Tag.ToString());
+            }
+            else if (FileTree.SelectedItem is DtoItem fileItem && fileItem.ItemKind == Kind.File)
+            {
+                Process.Start(fileItem.Tag.ToString());
             }
         }
 
         private void Rename_Click(object sender, RoutedEventArgs e)
         {
-            if (FileTree.SelectedItem is TreeViewItem item && item.Tag is DirectoryInfo dirInfo)
+            if (FileTree.SelectedItem is DtoItem selectedItem)
             {
-                string oldPath = dirInfo.FullName;
+                string oldPath = selectedItem.Tag.ToString();
                 string newPath = Microsoft.VisualBasic.Interaction.InputBox("Enter new name:", "Rename", Path.GetFileName(oldPath));
+
                 if (!string.IsNullOrEmpty(newPath))
                 {
-                    Directory.Move(oldPath, Path.Combine(Path.GetDirectoryName(oldPath), newPath));
-                    item.Header = newPath;
+                    string directory = Path.GetDirectoryName(oldPath);
+                    string fullNewPath = Path.Combine(directory, newPath);
+
+                    try
+                    {
+                        if (selectedItem.ItemKind == Kind.Directory)
+                        {
+                            Directory.Move(oldPath, fullNewPath);
+                        }
+                        else if (selectedItem.ItemKind == Kind.File)
+                        {
+                            File.Move(oldPath, fullNewPath);
+                        }
+
+                        // Обновляем имя в дереве
+                        selectedItem.Name = Path.GetFileName(fullNewPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error: {ex.Message}");
+                    }
                 }
             }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (FileTree.SelectedItem is TreeViewItem item && item.Tag is DirectoryInfo dirInfo)
+            if (FileTree.SelectedItem is DtoItem selectedItem)
             {
                 try
                 {
-                    Directory.Delete(dirInfo.FullName, true);
-                    FileTree.Items.Remove(item);
+                    if (selectedItem.ItemKind == Kind.Directory)
+                    {
+                        Directory.Delete(selectedItem.Tag.ToString(), true);
+                    }
+                    else if (selectedItem.ItemKind == Kind.File)
+                    {
+                        File.Delete(selectedItem.Tag.ToString());
+                    }
+
+                    // Удаляем элемент из дерева
+                    var parent = GetParentTreeViewItem((TreeViewItem)((FrameworkElement)e.OriginalSource).TemplatedParent);
+                    if (parent != null)
+                    {
+                        parent.Items.Remove(FileTree.SelectedItem);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -102,9 +148,18 @@ namespace FileO
             }
         }
 
+        private TreeViewItem GetParentTreeViewItem(DependencyObject child)
+        {
+            while (child != null && !(child is TreeViewItem))
+            {
+                child = VisualTreeHelper.GetParent(child);
+            }
+            return child as TreeViewItem;
+        }
+
         private void Copy_Click(object sender, RoutedEventArgs e)
         {
-            if (FileTree.SelectedItem is TreeViewItem item && item.Tag is DirectoryInfo dirInfo)
+            if (FileTree.SelectedItem is DtoItem selectedItem && selectedItem.ItemKind == Kind.Directory)
             {
                 string destination = Microsoft.VisualBasic.Interaction.InputBox("Enter destination path:", "Copy");
                 if (!string.IsNullOrEmpty(destination))
@@ -112,9 +167,9 @@ namespace FileO
                     try
                     {
                         Directory.CreateDirectory(destination);
-                        foreach (var file in dirInfo.GetFiles())
+                        foreach (var file in Directory.GetFiles(selectedItem.Tag.ToString()))
                         {
-                            file.CopyTo(Path.Combine(destination, file.Name), true);
+                            File.Copy(file, Path.Combine(destination, Path.GetFileName(file)), true);
                         }
                     }
                     catch (Exception ex)
@@ -127,15 +182,22 @@ namespace FileO
 
         private void Move_Click(object sender, RoutedEventArgs e)
         {
-            if (FileTree.SelectedItem is TreeViewItem item && item.Tag is DirectoryInfo dirInfo)
+            if (FileTree.SelectedItem is DtoItem selectedItem)
             {
                 string destination = Microsoft.VisualBasic.Interaction.InputBox("Enter destination path:", "Move");
                 if (!string.IsNullOrEmpty(destination))
                 {
                     try
                     {
-                        Directory.Move(dirInfo.FullName, destination);
-                        FileTree.Items.Remove(item);
+                        string sourcePath = selectedItem.Tag.ToString();
+                        Directory.Move(sourcePath, destination);
+
+                        // Удаляем элемент из дерева
+                        var parent = GetParentTreeViewItem((TreeViewItem)((FrameworkElement)e.OriginalSource).TemplatedParent);
+                        if (parent != null)
+                        {
+                            parent.Items.Remove(FileTree.SelectedItem);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -147,9 +209,21 @@ namespace FileO
 
         private void Properties_Click(object sender, RoutedEventArgs e)
         {
-            if (FileTree.SelectedItem is TreeViewItem item && item.Tag is DirectoryInfo dirInfo)
+            if (FileTree.SelectedItem is DtoItem selectedItem)
             {
-                MessageBox.Show($"Directory: {dirInfo.FullName}\nCreation Time: {dirInfo.CreationTime}");
+                FileInfo fileInfo = null;
+                DirectoryInfo dirInfo = null;
+
+                if (selectedItem.ItemKind == Kind.File)
+                {
+                    fileInfo = new FileInfo(selectedItem.Tag.ToString());
+                    MessageBox.Show($"File: {fileInfo.FullName}\nSize: {fileInfo.Length} bytes\nCreation Time: {fileInfo.CreationTime}");
+                }
+                else if (selectedItem.ItemKind == Kind.Directory)
+                {
+                    dirInfo = new DirectoryInfo(selectedItem.Tag.ToString());
+                    MessageBox.Show($"Directory: {dirInfo.FullName}\nCreation Time: {dirInfo.CreationTime}");
+                }
             }
         }
 

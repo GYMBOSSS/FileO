@@ -12,15 +12,17 @@ namespace FileO.Models
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Kind ItemKind { get; private set; }
-        public string Name { get; private set; }
+        public string Name { get; set; }
         public string Size { get; private set; }
         public ObservableCollection<DtoItem> Children { get; set; } = new ObservableCollection<DtoItem>();
+        public object Tag { get; private set; } // Добавляем свойство Tag
 
         public DtoItem(FileInfo fileInfo)
         {
             Name = fileInfo.Name;
             Size = ToStringView(fileInfo.Length);
             ItemKind = Kind.File;
+            Tag = fileInfo.FullName; // Сохраняем полный путь к файлу
         }
 
         public DtoItem(DirectoryInfo directoryInfo)
@@ -28,6 +30,7 @@ namespace FileO.Models
             Name = directoryInfo.Name;
             Size = "0"; // Можно добавить логику для подсчета размера директории
             ItemKind = Kind.Directory;
+            Tag = directoryInfo.FullName; // Сохраняем полный путь к директории
         }
 
         private string ToStringView(double size)
@@ -60,7 +63,7 @@ namespace FileO.Models
             return result;
         }
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        protected void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

@@ -56,7 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DtoItems.cs" />
+    <Compile Include="DtoItem.cs" />
     <Compile Include="Folder.cs" />
     <Compile Include="LBItem.cs" />
     <Compile Include="TreeViewModel.cs" />

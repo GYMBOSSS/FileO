@@ -60,7 +60,19 @@
 
                 <!-- Файловое дерево -->
                 <TreeView x:Name="FileTree" Grid.Row="1" Background="{DynamicResource LightThemeBackground}" 
-          Margin="10,0,2,10" ItemsSource="{Binding Items}">
+          Margin="10,0,2,10" ItemsSource="{Binding Items}" ContextMenuOpening="FileTree_ContextMenuOpening">
+                    <TreeView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Open" Click="Open_Click" />
+                            <MenuItem Header="Rename" Click="Rename_Click" />
+                            <MenuItem Header="Delete" Click="Delete_Click" />
+                            <Separator />
+                            <MenuItem Header="Copy" Click="Copy_Click" />
+                            <MenuItem Header="Move" Click="Move_Click" />
+                            <Separator />
+                            <MenuItem Header="Properties" Click="Properties_Click" />
+                        </ContextMenu>
+                    </TreeView.ContextMenu>
                     <TreeView.ItemTemplate>
                         <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                             <StackPanel Orientation="Horizontal">
