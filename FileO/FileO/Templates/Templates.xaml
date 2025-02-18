@@ -48,12 +48,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
                     <Border BorderThickness="2"
-                            BorderBrush="#FFE5FFB9"
+                            BorderBrush="#DCE3F5"
                             CornerRadius="5"
-                            Background="#FF93FFFD">
+                            Background="#9AB5FF">
                         <Grid>
                             <ToggleButton Name="ToggleButton"
-                                          Background="#FF93FFFD"
+                                          Background="#9AB5FF"
                                           Grid.Column="2"
                                           Focusable="False"
                                           IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}"
@@ -74,9 +74,9 @@
                                    Focusable="False"
                                    PopupAnimation="Slide">
                                 <Border BorderThickness="2"
-                                        BorderBrush="#FFE5FFB9"
+                                        BorderBrush="#DCE3F5"
                                         CornerRadius="5"
-                                        Background="#FF93FFFD">
+                                        Background="#9AB5FF">
                                     <Grid Name="DropDown"
                                           SnapsToDevicePixels="True"
                                           MinWidth="{TemplateBinding ActualWidth}">
@@ -91,8 +91,8 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="Background" Value="#FF93FFFD" />
-        <Setter Property="BorderBrush" Value="#FFE5FFB9" />
+        <Setter Property="Background" Value="#9AB5FF" />
+        <Setter Property="BorderBrush" Value="#DCE3F5" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="Margin" Value="10" />

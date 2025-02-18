@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileO"
         mc:Ignorable="d"
-        Title="File Manager" Height="534" Width="942" Background="{x:Null}">
+        Title="File Manager" Height="534" Width="758" Background="{x:Null}">
     <Window.Resources>
         <!-- Подключение шаблонов -->
         <ResourceDictionary>
@@ -13,8 +13,8 @@
                 <ResourceDictionary Source="Templates\Templates.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <!-- Цветовые схемы -->
-            <SolidColorBrush x:Key="LightThemeBackground" Color="#FF93FFFD" />
-            <SolidColorBrush x:Key="LightThemeForeground" Color="#FF009CFF" />
+            <SolidColorBrush x:Key="LightThemeBackground" Color="#FAFAFAFA" />
+            <SolidColorBrush x:Key="LightThemeForeground" Color="#FFAAACFF" />
             <SolidColorBrush x:Key="DarkThemeBackground" Color="#212121" />
             <SolidColorBrush x:Key="DarkThemeForeground" Color="#FFFFFF" />
         </ResourceDictionary>
@@ -23,65 +23,79 @@
     <!-- Корневой контейнер -->
     <Grid>
         <!-- Основное содержимое окна -->
-        <Border CornerRadius="20" Background="{DynamicResource LightThemeBackground}" Margin="10,0,10,10">
+        <Border CornerRadius="0" Background="{DynamicResource LightThemeBackground}" Margin="10,0,10,10">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="329"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="80"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                <Grid x:Name="SecondGrid" Margin="334,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Name="CurRow" Height="75*"></RowDefinition>
+                        <RowDefinition Height="433*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Height="57" Width="59" Click="Button_Click"/>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="87,5,0,0" VerticalAlignment="Top" Height="57" Width="59"/>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="162,5,0,0" VerticalAlignment="Top" Height="57" Width="59"/>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="243,5,0,0" VerticalAlignment="Top" Height="57" Width="59"/>
+                    <Image HorizontalAlignment="Left" Height="54" Margin="338,9,0,0" VerticalAlignment="Top" Width="56" Source="/Icons/BaseIcon.png"/>
 
-                <!-- Кнопка настроек -->
-                <Button x:Name="MyButton" Template="{DynamicResource BTTemplate}" 
-                        BorderBrush="{DynamicResource LightThemeForeground}" 
-                        BorderThickness="2" Background="{DynamicResource LightThemeBackground}" 
-                        FontSize="20" FontFamily="Arial" Margin="10,10,219,10" Click="MyButton_Click">
-                    Options
-                </Button>
+                </Grid>
+                <Grid Margin="0,0,411,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="329"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-                <!-- Выбор локального диска -->
-                <ComboBox x:Name="Drives" Grid.Row="0" Style="{DynamicResource StylishComboBox}" 
-                          BorderBrush="{DynamicResource LightThemeForeground}" 
-                          BorderThickness="2" Background="{DynamicResource LightThemeBackground}"
-                          FontSize="20" FontFamily="Arial" Margin="126,10,10,10" 
-                          SelectionChanged="Drives_SelectionChanged">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="{Binding IconPath}" Width="20" Height="20" Margin="5"/>
-                                <TextBlock Text="{Binding DriveName}" Margin="5" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
+                    <!-- Кнопка настроек -->
+                    <Button x:Name="MyButton"  
+                                BorderBrush="{DynamicResource LightThemeForeground}" 
+                                BorderThickness="2" Background="{DynamicResource LightThemeBackground}" 
+                                FontSize="20" FontFamily="Arial" Margin="10,10,219,10" Click="MyButton_Click">
+                        Options
+                    </Button>
 
-                <!-- Файловое дерево -->
-                <TreeView x:Name="FileTree" Grid.Row="1" Background="{DynamicResource LightThemeBackground}" 
-          Margin="10,0,2,10" ItemsSource="{Binding Items}" ContextMenuOpening="FileTree_ContextMenuOpening">
-                    <TreeView.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="Open" Click="Open_Click" />
-                            <MenuItem Header="Rename" Click="Rename_Click" />
-                            <MenuItem Header="Delete" Click="Delete_Click" />
-                            <Separator />
-                            <MenuItem Header="Copy" Click="Copy_Click" />
-                            <MenuItem Header="Move" Click="Move_Click" />
-                            <Separator />
-                            <MenuItem Header="Properties" Click="Properties_Click" />
-                        </ContextMenu>
-                    </TreeView.ContextMenu>
-                    <TreeView.ItemTemplate>
-                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Name}" />
-                                <TextBlock Text="{Binding Size}" Margin="10,0,0,0" FontStyle="Italic" Foreground="Gray" />
-                            </StackPanel>
-                        </HierarchicalDataTemplate>
-                    </TreeView.ItemTemplate>
-                </TreeView>
+                    <!-- Выбор локального диска -->
+                    <ComboBox x:Name="Drives" Grid.Row="0" Style="{DynamicResource StylishComboBox}" 
+                                  BorderBrush="{DynamicResource LightThemeForeground}" 
+                                  BorderThickness="2" Background="{DynamicResource LightThemeBackground}"
+                                  FontSize="20" FontFamily="Arial" Margin="126,10,10,10" 
+                                  SelectionChanged="Drives_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding IconPath}" Width="20" Height="20" Margin="5"/>
+                                    <TextBlock Text="{Binding DriveName}" Margin="5" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <!-- Файловое дерево -->
+                    <TreeView x:Name="FileTree" Grid.Row="1" Background="#9AB5FF" 
+                  Margin="10,0,10,10" ItemsSource="{Binding Items}" ContextMenuOpening="FileTree_ContextMenuOpening"
+                                  BorderThickness="2" BorderBrush="#DCE3F5">
+                        <TreeView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Open" Click="Open_Click" />
+                                <MenuItem Header="Rename" Click="Rename_Click" />
+                                <MenuItem Header="Delete" Click="Delete_Click" />
+                                <Separator />
+                                <MenuItem Header="Copy" Click="Copy_Click" />
+                                <MenuItem Header="Move" Click="Move_Click" />
+                                <Separator />
+                                <MenuItem Header="Properties" Click="Properties_Click" />
+                            </ContextMenu>
+                        </TreeView.ContextMenu>
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" />
+                                    <TextBlock Text="{Binding Size}" Margin="10,0,0,0" FontStyle="Italic" Foreground="Gray" />
+                                </StackPanel>
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                </Grid>
             </Grid>
         </Border>
 
