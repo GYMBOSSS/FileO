@@ -111,9 +111,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Icons\filemanager.ico.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\BaseIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\6326.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

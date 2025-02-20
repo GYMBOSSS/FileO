@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileO"
         mc:Ignorable="d"
-        Title="File Manager" Height="534" Width="758" Background="{x:Null}">
+        Title="File Manager" Height="534" Width="758" Background="{x:Null}"
+        Icon="\Icons\filemanager.ico.ico">
+    
     <Window.Resources>
         <!-- Подключение шаблонов -->
         <ResourceDictionary>
@@ -23,18 +25,26 @@
     <!-- Корневой контейнер -->
     <Grid>
         <!-- Основное содержимое окна -->
-        <Border CornerRadius="0" Background="{DynamicResource LightThemeBackground}" Margin="10,0,10,10">
+        <Border CornerRadius="0" Background="{DynamicResource LightThemeBackground}">
             <Grid>
                 <Grid x:Name="SecondGrid" Margin="334,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition x:Name="CurRow" Height="75*"></RowDefinition>
                         <RowDefinition Height="433*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Button Content="Button" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Height="57" Width="59" Click="Button_Click"/>
-                    <Button Content="Button" HorizontalAlignment="Left" Margin="87,5,0,0" VerticalAlignment="Top" Height="57" Width="59"/>
-                    <Button Content="Button" HorizontalAlignment="Left" Margin="162,5,0,0" VerticalAlignment="Top" Height="57" Width="59"/>
-                    <Button Content="Button" HorizontalAlignment="Left" Margin="243,5,0,0" VerticalAlignment="Top" Height="57" Width="59"/>
-                    <Image HorizontalAlignment="Left" Height="54" Margin="338,9,0,0" VerticalAlignment="Top" Width="56" Source="/Icons/BaseIcon.png"/>
+                    <Button x:Name="Array_Button"
+                            BorderBrush="{DynamicResource LightThemeForeground}" 
+                            BorderThickness="2" Background="{DynamicResource LightThemeBackground}"
+                            Content="Array" HorizontalAlignment="Left" Margin="10,0,0,0"
+                            VerticalAlignment="Center" Height="57" Width="59" Click="Button_Click"/>
+                    <Button x:Name="Downloads_Button"
+                            BorderBrush="{DynamicResource LightThemeForeground}" 
+                            BorderThickness="2" Background="{DynamicResource LightThemeBackground}"
+                            Content="Loads" HorizontalAlignment="Left" Margin="98,0,0,0"
+                            VerticalAlignment="Center" Height="57" Width="58"/>
+                    <Button Content="Button" HorizontalAlignment="Center" VerticalAlignment="Center" Height="57" Width="60"/>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="266,0,0,0" VerticalAlignment="Center" Height="57" Width="60"/>
+                    <Image HorizontalAlignment="Left" Height="54" Margin="358,10,0,0" VerticalAlignment="Top" Width="56" Source="/Icons/BaseIcon.png"/>
 
                 </Grid>
                 <Grid Margin="0,0,411,0">
@@ -47,9 +57,8 @@
                     </Grid.RowDefinitions>
 
                     <!-- Кнопка настроек -->
-                    <Button x:Name="MyButton"  
-                                BorderBrush="{DynamicResource LightThemeForeground}" 
-                                BorderThickness="2" Background="{DynamicResource LightThemeBackground}" 
+                    <Button x:Name="MyButton" Template="{DynamicResource BTTemplate}"
+                                Tag="/Icons/6326.ico"
                                 FontSize="20" FontFamily="Arial" Margin="10,10,219,10" Click="MyButton_Click">
                         Options
                     </Button>

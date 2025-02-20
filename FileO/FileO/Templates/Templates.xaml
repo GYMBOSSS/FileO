@@ -2,17 +2,27 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!-- Шаблон кнопки -->
     <ControlTemplate TargetType="Button" x:Key="BTTemplate">
-        <Border CornerRadius="25"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                Background="{TemplateBinding Background}"
-                Height="{TemplateBinding Height}"
-                Width="{TemplateBinding Width}">
-            <ContentControl Margin="{TemplateBinding Padding}"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Content="{TemplateBinding Content}" />
-            <Border.RenderTransform>
+        <Border 
+            BorderBrush="#FFAAACFF"
+            BorderThickness="2"
+            Background="#FAFAFAFA"
+            Height="{TemplateBinding Height}"
+            Width="{TemplateBinding Width}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Image 
+                Source="{Binding Tag, RelativeSource={RelativeSource AncestorType=Button}}"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center" Grid.Row="0" />
+                <!-- <ContentControl 
+                Margin="{TemplateBinding Padding}" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                Content="{TemplateBinding Content}" Grid.Row="0" /> -->
+            </Grid>
+            <!--<Border.RenderTransform>
                 <ScaleTransform ScaleX=".5"></ScaleTransform>
             </Border.RenderTransform>
             <Border.Triggers>
@@ -38,7 +48,7 @@
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
-            </Border.Triggers>
+            </Border.Triggers>-->
         </Border>
     </ControlTemplate>
 

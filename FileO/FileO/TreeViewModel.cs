@@ -20,39 +20,86 @@ namespace FileO.ViewModels
             _cvs.Source = Items;
         }
 
+        /// <summary>
+        /// Загружает содержимое указанного диска или каталога.
+        /// </summary>
+        /// <param name="driveName">Путь к диску или каталогу.</param>
         public void Load(string driveName)
         {
             Items.Clear();
-            LoadFolderAsync(new DirectoryInfo(driveName), Items);
+            _ = Task.Run(async () => await LoadFolderAsync(new DirectoryInfo(driveName), Items));
         }
 
-        private async Task LoadFolderAsync(DirectoryInfo dir, ObservableCollection<DtoItem> col, int maxDepth = 5, int currentDepth = 0)
+        /// <summary>
+        /// Асинхронно загружает содержимое каталога и его подкаталогов.
+        /// </summary>
+        /// <param name="dir">Каталог для загрузки.</param>
+        /// <param name="col">Коллекция, в которую добавляются элементы.</param>
+        /// <param name="maxDepth">Максимальная глубина рекурсии.</param>
+        /// <param name="currentDepth">Текущая глубина рекурсии.</param>
+        /// <returns></returns>
+        private async Task LoadFolderAsync(DirectoryInfo dir, ObservableCollection<DtoItem> col, int maxDepth = 3, int currentDepth = 0)
         {
             if (currentDepth > maxDepth) return;
 
             try
             {
-                var dto = new DtoItem(dir);
-                col.Add(dto);
+                // Проверяем, является ли текущий каталог системным
+                if (IsSystemDirectory(dir.FullName))
+                {
+                    return; // Пропускаем системные каталоги
+                }
 
+                var dto = new DtoItem(dir);
+
+                // Добавляем элемент в коллекцию через Dispatcher
+                Application.Current.Dispatcher.Invoke(() => col.Add(dto));
+
+                // Рекурсивно загружаем подкаталоги
                 foreach (var subDir in dir.GetDirectories())
                 {
+                    if (IsSystemDirectory(subDir.FullName)) continue; // Пропускаем системные подкаталоги
                     await LoadFolderAsync(subDir, dto.Children, maxDepth, currentDepth + 1);
                 }
 
+                // Добавляем файлы из текущего каталога через Dispatcher
                 foreach (var file in dir.GetFiles())
                 {
-                    dto.Children.Add(new DtoItem(file));
+                    Application.Current.Dispatcher.Invoke(() => dto.Children.Add(new DtoItem(file)));
                 }
             }
             catch (UnauthorizedAccessException)
             {
-                //MessageBox.Show($"Нет доступа к каталогу {dir.FullName}");
+                // Игнорируем ошибки доступа к каталогам
             }
             catch (Exception ex)
             {
-                //MessageBox.Show($"Ошибка при загрузке содержимого: {ex.Message}");
+                MessageBox.Show($"Ошибка при загрузке содержимого: {ex.Message}");
             }
+        }
+
+        /// <summary>
+        /// Метод для проверки, является ли каталог системным.
+        /// </summary>
+        /// <param name="path">Путь к каталогу.</param>
+        /// <returns>True, если каталог системный; иначе False.</returns>
+        private bool IsSystemDirectory(string path)
+        {
+            // Список системных каталогов, которые нужно исключить
+            var systemDirs = new[]
+            {
+                "Windows", "Program Files", "Program Files (x86)", "ProgramData",
+                "System Volume Information", "Recovery", "MSOCache", "$Recycle.Bin"
+            };
+
+            // Проверяем, содержит ли путь одно из системных имен
+            foreach (var dir in systemDirs)
+            {
+                if (path.IndexOf(dir, StringComparison.OrdinalIgnoreCase) >= 0)
+                    return true;
+            }
+
+            return false;
         }
     }
 }
