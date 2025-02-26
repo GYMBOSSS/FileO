@@ -10,7 +10,7 @@
             Width="{TemplateBinding Width}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition> </RowDefinition>
                 </Grid.RowDefinitions>
                 <Image 
                 Source="{Binding Tag, RelativeSource={RelativeSource AncestorType=Button}}"
@@ -24,31 +24,15 @@
             </Grid>
             <!--<Border.RenderTransform>
                 <ScaleTransform ScaleX=".5"></ScaleTransform>
-            </Border.RenderTransform>
+            </Border.RenderTransform>-->
             <Border.Triggers>
                 <EventTrigger RoutedEvent="MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" To="1" Duration="0:0:.4">
-                                <DoubleAnimation.EasingFunction>
-                                    <QuadraticEase></QuadraticEase>
-                                </DoubleAnimation.EasingFunction>
-                            </DoubleAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
+
                 </EventTrigger>
                 <EventTrigger RoutedEvent="MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" To="0.5" Duration="0:0:.4">
-                                <DoubleAnimation.EasingFunction>
-                                    <QuadraticEase></QuadraticEase>
-                                </DoubleAnimation.EasingFunction>
-                            </DoubleAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
+
                 </EventTrigger>
-            </Border.Triggers>-->
+            </Border.Triggers>
         </Border>
     </ControlTemplate>
 

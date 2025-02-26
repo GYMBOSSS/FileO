@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileO"
         mc:Ignorable="d"
-        Title="File Manager" Height="534" Width="758" Background="{x:Null}"
+        Title="File Manager" Height="534" Width="587" Background="{x:Null}"
         Icon="\Icons\filemanager.ico.ico">
-    
+
     <Window.Resources>
         <!-- Подключение шаблонов -->
         <ResourceDictionary>
@@ -27,27 +27,50 @@
         <!-- Основное содержимое окна -->
         <Border CornerRadius="0" Background="{DynamicResource LightThemeBackground}">
             <Grid>
-                <Grid x:Name="SecondGrid" Margin="334,0,0,0">
+                <Grid x:Name="SecondGrid" Margin="334,0,0,0" HorizontalAlignment="Left" Width="250">
                     <Grid.RowDefinitions>
-                        <RowDefinition x:Name="CurRow" Height="75*"></RowDefinition>
-                        <RowDefinition Height="433*"></RowDefinition>
+                        <RowDefinition x:Name="CurRow" Height="85*"></RowDefinition>
+                        <RowDefinition Height="174*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Button x:Name="Array_Button"
-                            BorderBrush="{DynamicResource LightThemeForeground}" 
-                            BorderThickness="2" Background="{DynamicResource LightThemeBackground}"
-                            Content="Array" HorizontalAlignment="Left" Margin="10,0,0,0"
-                            VerticalAlignment="Center" Height="57" Width="59" Click="Button_Click"/>
-                    <Button x:Name="Downloads_Button"
-                            BorderBrush="{DynamicResource LightThemeForeground}" 
-                            BorderThickness="2" Background="{DynamicResource LightThemeBackground}"
-                            Content="Loads" HorizontalAlignment="Left" Margin="98,0,0,0"
-                            VerticalAlignment="Center" Height="57" Width="58"/>
-                    <Button Content="Button" HorizontalAlignment="Center" VerticalAlignment="Center" Height="57" Width="60"/>
-                    <Button Content="Button" HorizontalAlignment="Left" Margin="266,0,0,0" VerticalAlignment="Center" Height="57" Width="60"/>
-                    <Image HorizontalAlignment="Left" Height="54" Margin="358,10,0,0" VerticalAlignment="Top" Width="56" Source="/Icons/BaseIcon.png"/>
+                    <Button x:Name="Array_Button" Template="{DynamicResource BTTemplate}"
+                            Tag="/Icons/Featured2.png"
+                            HorizontalAlignment="Left" Margin="10,10,0,0"
+                            VerticalAlignment="Top" 
+                            Height="57" Width="59" Click="Button_Click" Grid.Row="0"/>
+                    <Button x:Name="Downloads_Button" Template="{DynamicResource BTTemplate}"
+                            Tag="/Icons/Downloaded2.png"
+                            HorizontalAlignment="Left" Margin="100,10,0,0"
+                            VerticalAlignment="Top" 
+                            Height="57" Width="58" Grid.Row="0" Click="Downloads_Button_Click"/>
+                    <Button x:Name="Music_Button" Template="{DynamicResource BTTemplate}"
+                            Tag="/Icons/Music.png"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            Height="57" Width="60" Margin="10,95,0,0" Grid.Row="0" Click="Music_Button_Click"/>
+                    <Button x:Name="Pictures_Button" Template="{DynamicResource BTTemplate}"
+                            Tag="/Icons/Pictures1.png"
+                            HorizontalAlignment="Left" Margin="100,95,0,0" VerticalAlignment="Top"
+                            Height="57" Width="60" Grid.Row="0" Click="Pictures_Button_Click"/>
+                    <Image HorizontalAlignment="Left" 
+                           Height="54" Margin="176,14,0,0" VerticalAlignment="Top" Width="56"
+                           Source="/Icons/BaseIcon.png" Grid.Row="0"/>
+                    <ListBox x:Name="UserButtons_ListBox" Background="#FAFAFAFA"
+                             ContextMenuOpening="UserButtons_ListBox_ContextMenuOpening" Margin="0,170,10,10" Grid.RowSpan="2">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Open" Click="ListBox_Open_Click" />
+                                <MenuItem Header="Rename" Click="ListBox_Rename_Click" />
+                                <MenuItem Header="Delete" Click="ListBox_Delete_Click" />
+                                <Separator />
+                                <MenuItem Header="Copy" Click="ListBox_Copy_Click" />
+                                <MenuItem Header="Move" Click="ListBox_Move_Click" />
+                                <Separator />
+                                <MenuItem Header="Properties" Click="ListBox_Properties_Click" />
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
 
                 </Grid>
-                <Grid Margin="0,0,411,0">
+                <Grid Margin="0,0,260,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="329"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
@@ -58,8 +81,9 @@
 
                     <!-- Кнопка настроек -->
                     <Button x:Name="MyButton" Template="{DynamicResource BTTemplate}"
-                                Tag="/Icons/6326.ico"
-                                FontSize="20" FontFamily="Arial" Margin="10,10,219,10" Click="MyButton_Click">
+                                Tag="/Icons/Options2.png"
+                                FontSize="20" FontFamily="Arial" Margin="10,10,255,10" Click="MyButton_Click"
+                            Width="60" Height="60">
                         Options
                     </Button>
 
@@ -93,6 +117,7 @@
                                 <MenuItem Header="Move" Click="Move_Click" />
                                 <Separator />
                                 <MenuItem Header="Properties" Click="Properties_Click" />
+                                <MenuItem Header="Add to featured" Click="AddToFeatured_Click"/>
                             </ContextMenu>
                         </TreeView.ContextMenu>
                         <TreeView.ItemTemplate>

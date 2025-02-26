@@ -120,5 +120,35 @@
   <ItemGroup>
     <Resource Include="Icons\6326.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FeaturedFiles.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\70289.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\downloads.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Featured.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Featured2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Downloaded2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Music.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Pictures1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Pictures2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Options2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
