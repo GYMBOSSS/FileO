@@ -703,8 +703,8 @@ namespace FileO
 
         private void LightTheme_Click(object sender, RoutedEventArgs e)
         {
-            Resources["LightThemeBackground"] = new SolidColorBrush(Color.FromArgb(255, 147, 255, 253));
-            Resources["LightThemeForeground"] = new SolidColorBrush(Color.FromArgb(255, 0, 156, 255));
+            Resources["LightThemeBackground"] = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+            Resources["LightThemeForeground"] = new SolidColorBrush(Color.FromArgb(255, 33, 33, 33));
         }
 
         private void DarkTheme_Click(object sender, RoutedEventArgs e)
