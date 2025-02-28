@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileO"
         mc:Ignorable="d"
-        Title="File Manager" Height="534" Width="587" Background="{x:Null}"
+        Title="File Manager" Height="534" Width="610" Background="{x:Null}"
         Icon="\Icons\filemanager.ico.ico">
 
     <Window.Resources>
@@ -34,25 +34,22 @@
                     </Grid.RowDefinitions>
                     <Button x:Name="Array_Button" Template="{DynamicResource BTTemplate}"
                             Tag="/Icons/Featured2.png"
-                            HorizontalAlignment="Left" Margin="10,10,0,0"
+                            HorizontalAlignment="Left" Margin="44,10,0,0"
                             VerticalAlignment="Top" 
                             Height="57" Width="59" Click="Button_Click" Grid.Row="0"/>
                     <Button x:Name="Downloads_Button" Template="{DynamicResource BTTemplate}"
                             Tag="/Icons/Downloaded2.png"
-                            HorizontalAlignment="Left" Margin="100,10,0,0"
+                            HorizontalAlignment="Left" Margin="144,10,0,0"
                             VerticalAlignment="Top" 
                             Height="57" Width="58" Grid.Row="0" Click="Downloads_Button_Click"/>
                     <Button x:Name="Music_Button" Template="{DynamicResource BTTemplate}"
                             Tag="/Icons/Music.png"
                             HorizontalAlignment="Left" VerticalAlignment="Top"
-                            Height="57" Width="60" Margin="10,95,0,0" Grid.Row="0" Click="Music_Button_Click"/>
+                            Height="57" Width="60" Margin="43,85,0,0" Grid.Row="0" Click="Music_Button_Click"/>
                     <Button x:Name="Pictures_Button" Template="{DynamicResource BTTemplate}"
                             Tag="/Icons/Pictures1.png"
-                            HorizontalAlignment="Left" Margin="100,95,0,0" VerticalAlignment="Top"
+                            HorizontalAlignment="Left" Margin="144,85,0,0" VerticalAlignment="Top"
                             Height="57" Width="60" Grid.Row="0" Click="Pictures_Button_Click"/>
-                    <Image HorizontalAlignment="Left" 
-                           Height="54" Margin="176,14,0,0" VerticalAlignment="Top" Width="56"
-                           Source="/Icons/BaseIcon.png" Grid.Row="0"/>
                     <ListBox x:Name="UserButtons_ListBox" Background="#FAFAFAFA"
                              ContextMenuOpening="UserButtons_ListBox_ContextMenuOpening" Margin="0,170,10,10" Grid.RowSpan="2">
                         <ListBox.ContextMenu>
@@ -111,6 +108,8 @@
                             <ContextMenu>
                                 <MenuItem Header="Open" Click="Open_Click" />
                                 <MenuItem Header="Rename" Click="Rename_Click" />
+                                <MenuItem Header="Create folder" Click="CreateFolder_Click" />
+                                <MenuItem Header="Create file" Click="CreateFile_Click" />
                                 <MenuItem Header="Delete" Click="Delete_Click" />
                                 <Separator />
                                 <MenuItem Header="Copy" Click="Copy_Click" />

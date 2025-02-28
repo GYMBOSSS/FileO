@@ -50,6 +50,55 @@ namespace FileO
                 FileTree.ItemsSource = _treeViewModel.Items;
             }
         }
+        private void UpdateTreeView()
+        {
+            if (CurrentDrive != null)
+            {
+                _treeViewModel.Items.Clear(); // Очищаем текущие элементы
+                _treeViewModel.Load(CurrentDrive.RootDirectory.FullName); // Заново загружаем данные
+                FileTree.ItemsSource = _treeViewModel.Items; // Обновляем привязку
+            }
+        }
+
+        private void LoadDirectoryContents(TreeViewItem parentItem, DirectoryInfo directory)
+        {
+            try
+            {
+                // Очищаем содержимое узла перед загрузкой
+                parentItem.Items.Clear();
+
+                // Загружаем поддиректории
+                foreach (var subDir in directory.GetDirectories())
+                {
+                    var newItem = new TreeViewItem
+                    {
+                        Tag = subDir,
+                        Header = subDir.Name,
+                        Items = { "*" } // Placeholder для ленивой загрузки
+                    };
+                    parentItem.Items.Add(newItem);
+                }
+
+                // Загружаем файлы
+                foreach (var file in directory.GetFiles())
+                {
+                    var newItem = new TreeViewItem
+                    {
+                        Tag = file,
+                        Header = file.Name
+                    };
+                    parentItem.Items.Add(newItem);
+                }
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show($"Нет доступа к каталогу {directory.FullName}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке содержимого: {ex.Message}");
+            }
+        }
 
         // Контекстное меню
         private void FileTree_ContextMenuOpening(object sender, ContextMenuEventArgs e)
@@ -160,6 +209,7 @@ namespace FileO
                     }
                 }
             }
+            UpdateTreeView();
         }
 
         private void ListBox_Rename_Click(object sender, RoutedEventArgs e)
@@ -208,10 +258,12 @@ namespace FileO
                     if (selectedItem.ItemKind == Kind.Directory)
                     {
                         Directory.Delete(selectedItem.Tag.ToString(), true);
+                        MessageBox.Show($"Папка {selectedItem.Tag.ToString()} успешно удалена");
                     }
                     else if (selectedItem.ItemKind == Kind.File)
                     {
                         File.Delete(selectedItem.Tag.ToString());
+                        MessageBox.Show($"Файл {selectedItem.Tag.ToString()} успешно удалён");
                     }
 
                     // Удаляем элемент из дерева
@@ -226,6 +278,7 @@ namespace FileO
                     MessageBox.Show($"Error: {ex.Message}");
                 }
             }
+            UpdateTreeView();
         }
 
         private void ListBox_Delete_Click(object sender, RoutedEventArgs e)
@@ -286,6 +339,7 @@ namespace FileO
                     }
                 }
             }
+            UpdateTreeView();
         }
 
         private void ListBox_Copy_Click(object sender, RoutedEventArgs e)
@@ -346,6 +400,7 @@ namespace FileO
                     }
                 }
             }
+            UpdateTreeView();
         }
 
         private void ListBox_Move_Click(object sender, RoutedEventArgs e)
@@ -512,24 +567,6 @@ namespace FileO
             }
         }
 
-        /*private void ListBox_Archive_Click(object sender, RoutedEventArgs e)
-        {
-            if (UserButtons_ListBox.SelectedItem != null)
-            {
-                string archiveName = Microsoft.VisualBasic.Interaction.InputBox("Введите имя архива (без расширения):", "Archive");
-                string archivePath = Path.Combine(Path.GetDirectoryName(UserButtons_ListBox.SelectedItem.ToString()), $"{archiveName}.zip");
-
-                try
-                {
-                    ZipFile.CreateFromDirectory(Path.GetDirectoryName(UserButtons_ListBox.SelectedItem.ToString()), archivePath);
-                    MessageBox.Show($"Файлы успешно архивированы: {archivePath}");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}");
-                }
-            }
-        }*/
 
         private void ListBox_SearchByDate_Click(object sender, RoutedEventArgs e)
         {
@@ -576,6 +613,85 @@ namespace FileO
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}");
+            }
+        }
+        private void CreateFolder_Click(object sender, RoutedEventArgs e)
+        {
+            // Проверяем, выбран ли элемент в TreeView
+            if (FileTree.SelectedItem is DtoItem selectedItem && selectedItem.ItemKind == Kind.Directory)
+            {
+                string directoryPath = selectedItem.Tag.ToString(); // Получаем путь к текущей директории
+
+                // Запрашиваем имя новой папки у пользователя
+                string folderName = Microsoft.VisualBasic.Interaction.InputBox("Введите имя новой папки:", "Create Folder");
+
+                if (!string.IsNullOrEmpty(folderName))
+                {
+                    string folderPath = Path.Combine(directoryPath, folderName); // Полный путь к новой папке
+
+                    try
+                    {
+                        // Создаем новую директорию
+                        Directory.CreateDirectory(folderPath);
+                        MessageBox.Show($"Папка {folderName} успешно создана.");
+
+                        // Обновляем дерево
+                        UpdateTreeView();
+                    }
+                    catch (UnauthorizedAccessException ex)
+                    {
+                        MessageBox.Show($"Ошибка доступа: {ex.Message}");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при создании папки: {ex.Message}");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите директорию, в которой нужно создать папку.");
+            }
+        }
+
+        private void CreateFile_Click(object sender, RoutedEventArgs e)
+        {
+            // Проверяем, выбран ли элемент в TreeView
+            if (FileTree.SelectedItem is DtoItem selectedItem && selectedItem.ItemKind == Kind.Directory)
+            {
+                string directoryPath = selectedItem.Tag.ToString(); // Получаем путь к директории
+
+                // Запрашиваем имя нового файла у пользователя
+                string fileName = Microsoft.VisualBasic.Interaction.InputBox("Введите имя нового файла:", "Create File");
+
+                if (!string.IsNullOrEmpty(fileName))
+                {
+                    string filePath = Path.Combine(directoryPath, fileName); // Полный путь к новому файлу
+
+                    try
+                    {
+                        // Создаем новый файл
+                        using (FileStream fs = File.Create(filePath))
+                        {
+                            Console.WriteLine($"Файл {fileName} успешно создан.");
+                        }
+
+                        // Обновляем дерево или ListBox
+                        UpdateTreeView();
+                    }
+                    catch (UnauthorizedAccessException ex)
+                    {
+                        MessageBox.Show($"Ошибка доступа: {ex.Message}");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при создании файла: {ex.Message}");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите директорию для создания файла.");
             }
         }
 
@@ -626,11 +742,6 @@ namespace FileO
         {
             string[] files = File.ReadAllLines("FeaturedFiles.txt");
             UserButtons_ListBox.ItemsSource = files;
-            /*foreach (FileInfo fileInfo in FeaturedFiles)
-            {
-                string text = fileInfo.FullName;
-                UserButtons_ListBox.Items.Add(text);
-            }*/
         }
 
         private void Downloads_Button_Click(object sender, RoutedEventArgs e)
@@ -752,5 +863,6 @@ namespace FileO
                 MessageBox.Show("Папка 'Фото' не найдена.");
             }
         }
+
     }
 }
